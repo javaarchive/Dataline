@@ -10,7 +10,8 @@ public class ControlMessage
     public bool? newState;
 }
 
-namespace Celeste.Mod.Dataline {
+namespace Celeste.Mod.Dataline
+{
     public class DatalineModule : EverestModule
     {
         public static DatalineModule Instance { get; private set; }
