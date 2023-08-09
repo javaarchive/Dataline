@@ -1,6 +1,8 @@
 - Name: Dataline
-  Version: 0.1.0
+  Version: 0.2.0
   DLL: bin/Dataline.dll
   Dependencies:
     - Name: EverestCore
       Version: 1.4054.0
+    - Name: CelesteTAS
+      Version: 3.30.4

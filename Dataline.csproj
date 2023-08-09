@@ -33,6 +33,9 @@
         <Reference Include="$(CelestePrefix)\FNA.dll">
             <Private>false</Private>
         </Reference>
+        <Reference Include="CelesteTAS-EverestInterop">
+          <HintPath>lib\CelesteTAS-EverestInterop.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
     <Target Name="CopyFiles" AfterTargets="Build">

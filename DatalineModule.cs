@@ -6,6 +6,9 @@ using H.Socket.IO;
 using H.Engine.IO;
 using H.WebSockets;
 using Microsoft.Xna.Framework;
+using TAS;
+using TAS.Input;
+using Celeste.Mod.Dataline;
 
 public class ControlMessage
 {
@@ -49,6 +52,7 @@ namespace Celeste.Mod.Dataline
         public override void Load()
         {
             On.Celeste.Celeste.Initialize += modInitalize;
+            
         }
 
         public override void Unload()
@@ -92,7 +96,34 @@ namespace Celeste.Mod.Dataline
 
         private void modInitalize(On.Celeste.Celeste.orig_Initialize orig, Celeste self)
         {
+            Log("Dataline Dev revision tas data");
             Connect();
+            orig(self);
+        }
+
+        public void Log(string msg)
+        {
+            Logger.Log(LogLevel.Info, "DatalineModule", msg);
+        }
+    }
+}
+
+#pragma warning disable CS0626 // orig_ method is marked external and has no attributes on it.
+namespace TAS
+{
+    // The patch_ class is in the same namespace as the original class.
+    // This can be bypassed by placing it anywhere else and using [MonoModPatch("global::Celeste.Player")]
+
+    // Visibility defaults to "internal", which hides your patch from runtime mods.
+    // If you want to "expose" new members to runtime mods, create extension methods in a public static class PlayerExt
+    class patch_InputHelper
+    { // : Player lets us reuse any of its visible members without redefining them.
+        // MonoMod creates a copy of the original method, called orig_Added.
+        public static extern void orig_FeedInputs(InputFrame input);
+        public static void patch_FeedInputs(InputFrame input)
+        {
+            DatalineModule.Instance.Log("input fed " + input);
+            orig_FeedInputs(input);
         }
     }
 }
