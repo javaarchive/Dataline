@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using H.Socket.IO;
+using H.Engine.IO;
+using H.WebSockets;
 using Microsoft.Xna.Framework;
 
 public class ControlMessage

@@ -41,6 +41,7 @@
 		<Copy SourceFiles="lib\H.Socket.IO.dll" DestinationFolder="bin" />
 		<Copy SourceFiles="lib\H.Engine.IO.dll" DestinationFolder="bin" />
 		<Copy SourceFiles="lib\H.WebSockets.dll" DestinationFolder="bin" />
+		<Copy SourceFiles="lib\System.Net.WebSockets.dll" DestinationFolder="bin" />
 	</Target>
     <PropertyGroup>
         <PathMap>$(MSBuildProjectDirectory)=Dataline/</PathMap>
